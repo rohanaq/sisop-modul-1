@@ -4,10 +4,11 @@
 ## Syarat Mengikuti Modul
 1. Linux OS 
 2. CLI (Command Line Interface)
-    n.b. Untuk penyegaran tentang CLI Linux, silahkan dibaca kembali [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
+
+n.b. Untuk penyegaran tentang CLI Linux, silahkan dibaca kembali [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
   
 ## Tujuan
-1. Praktikan mengetahui apa itu shell dan shell scripting
+1. Praktikan mengetahui konsep dasar shell dan shell scripting
 2. Praktikan memahami tujuan dan manfaat dari shell scripting
 3. Praktikan memahami bagaimana cara membuat shell script
 
@@ -46,20 +47,20 @@ Ada 2 tipe shell utama di dalam sistem operasi Linux, yaitu:
    * TENEX/TOPS C Shell (tcsh)
 
 ### 1.2 Shell Scripting
-* **Shell scripting** adalah sebuah kegiatan menulis serangkaian perintah untuk dieksekusi oleh Shell. Konsep dasarnya sederhana, hanya sebuah file yang berisi daftar perintah (Linux commands) yang ditulis berdasarkan urutan eksekusinya. 
+* **Shell scripting** adalah sebuah kegiatan menulis serangkaian perintah untuk dieksekusi oleh Shell. Konsep dasarnya sederhana, yaitu sebuah file yang berisi daftar perintah (Linux commands) yang ditulis berdasarkan urutan eksekusinya. 
 * Dengan menggunakan shell script, kita dapat menyederhanakan serangkaian perintah yang panjang dan berulang menjadi sebuah script tunggal yang dapat disimpan dan dieksekusi kapanpun kita inginkan. Tentu saja hal ini akan sangat menghemat waktu dan tenaga kita.
 * Selain itu, shell script juga dapat menjalankan perintah secara otomatis dan terjadwal.
 
 ### 1.3 Cara Membuat Shell Script
 1. Buatlah sebuah file berekstensi **.sh** menggunakan editor apapun, misalnya `nano`, `vim`, atau `gedit`.
-   ```bash 
-   nano hello-sisop.sh
-   ```
+    ```bash 
+    nano hello-sisop.sh
+    ```
 2. Tulis beberapa baris perintah disana, diawali dengan **shebang** `#!/bin/sh`. Shebang berfungsi untuk memberitahu sistem bahwa perintah-perintah yg ada di dalam file tersebut harus dijalankan oleh Bourne Shell.
 3. Simpan dan ubah permission file script agar dapat dieksekusi.
-   ```bash
-   chmod +x hello-sisop.sh
-   ```
+    ```bash
+    chmod +x hello-sisop.sh
+    ```
 4. Eksekusi file script dengan cara `./hello-sisop.sh` atau `bash hello-sisop.sh`.
 
 ### 1.4 Shell Variables
