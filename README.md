@@ -18,7 +18,9 @@ Cron memungkinkan pengguna Linux dan Unix untuk menjalankan perintah atau script
 - Contoh perintah yang dijalankan dengan cron:<br>
 ![contoh-cron](images/contoh-cron.png)<br>
     1. Menjalankan script routing setiap kali PC dinyalakan dan mencatatnya pada _route.log_
-    2. Menjalankan script firewall setiap kali PC dinyalakan dan mencatatnya pada _iptables.log_
+    2. Menjalankan script firewall setiap kali PC dinyalakan dan mencatatnya pada _iptables.log_<br>
+- Untuk lebih memahami crontab dapat mengakses website [crontab-guru](https://crontab.guru).
+![crontab-guru](images/crontab-guru.png)<br>
 
 ### 2.2 Referensi
 https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/
