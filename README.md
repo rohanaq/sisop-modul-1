@@ -237,6 +237,70 @@ ini contoh
 
 
 ### 1.9 Loop
+* **Loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali. Ada beberapa macam shell loops:
+    1. While loop
+    2. For loop
+    3. Until loop
+    4. Select loop
+
+#### While loop
+* **While loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali **selama** suatu kondisi terpenuhi.
+* While digunakan jika kita ingin memanipulasi suatu variabel secara berulang-ulang.
+*  Syntax:
+    ```bash
+    while **kondisi**
+    do
+        **perintah** #dieksekusi jika kondisi masih terpenuhi
+    done
+    ```
+* Contoh:
+    ```bash
+    ini contoh
+    ```
+#### For loop
+* **For loop** digunakan untuk mengulang serangkaian perintah untuk setiap item pada daftar.
+* Syntax:
+    ```bash
+    for **var** in **daftar_item**
+    do
+        **perintah** #dieksekusi untuk setiap item dalam daftar
+    done
+    ```
+* Contoh:
+    ```bash
+    ini contoh
+    ```
+
+#### Until loop
+* Berbeda dengan while loop, **until loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali **sampai** suatu kondisi terpenuhi.
+*  Syntax:
+    ```bash
+    until **kondisi**
+    do
+        **perintah** #dieksekusi jika kondisi belum terpenuhi
+    done
+    ```
+* Contoh:
+    ```bash
+    ini contoh
+    ```
+
+#### Select loop
+* **Select loop** digunakan ketika kita ingin membuat sebuah program dengan beberapa daftar pilihan yang bisa dipilih oleh pengguna, misalnya menu.
+*  Syntax:
+    ```bash
+    select **var** in **daftar_item**
+    do
+        **perintah** #dieksekusi untuk setiap item dalam daftar
+    done
+    ```
+* Contoh:
+    ```bash
+    ini contoh
+    ```
+#### Nesting loops
+* Semua jenis loop mendukung konsep **nesting loop**, artinya kita dapat meletakkan loop di dalam loop, baik dalam jenis loop yang sama maupun berbeda.
+
 
 ### 1.10 Function atau Subroutine 
 
