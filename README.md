@@ -44,7 +44,7 @@ n.b. Untuk penyegaran kembali terkait CLI, silahkan membaca [Modul Pengenalan CL
 ### 1.1 Shell
 Sebuah sistem operasi terdiri dari dua komponen utama, yaitu **Kernel** dan **Shell**.
 
-![component](/assets/component.png)
+![component](/images/component.png)
 
 * **Kernel** adalah inti dari komputer. Komponen ini memungkinkan terjadinya komunikasi antara software dan hardware. Jika kernel adalah bagian terdalam dari sebuah sistem operasi, maka **shell** adalah bagian terluarnya.
 * **Shell** adalah antarmuka sistem operasi, yaitu sebuah lingkungan dimana user dapat menjalankan program, perintah, maupun shell script. Shell menerima input dari user, menjalankan program berdasarkan input tersebut, kemudian menampilkan outputnya. Shell dapat diakses melalui **Terminal**.
