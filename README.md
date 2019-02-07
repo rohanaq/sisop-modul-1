@@ -623,4 +623,4 @@ terletak di /home/\<user>/Documents.
 3. Buatlah sebuah program awk yang bisa menampilkan user yang melakukan proses. Tapi karena
 kemungkinan besar jumlah barisnya akan sangat banyak, maka tampilkan secara distinct (tidak ada
 user yang sama muncul lebih dari satu kali). Jika sudah bisa, coba masukkan hasilnya ke dalam file
-pengguna.log
+pengguna.log (Hint: menggunakan pipe dan command ps)
