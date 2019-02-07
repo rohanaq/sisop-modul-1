@@ -8,9 +8,6 @@
 n.b. Untuk penyegaran kembali terkait CLI, silahkan membaca [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
   
 ## Daftar Isi
-- [Shell Scripting dan AWK](#shell-scripting-dan-awk)
-  - [Syarat Mengikuti Modul](#syarat-mengikuti-modul)
-  - [Daftar Isi](#daftar-isi)
   - [1. Shell Scripting](#1-shell-scripting)
     - [1.1 Shell](#11-shell)
     - [1.2 Shell Scripting](#12-shell-scripting)
@@ -70,24 +67,24 @@ Ada 2 tipe shell utama di dalam sistem operasi Linux, yaitu:
 
 ### 1.3 Membuat Shell Script
 1. Buatlah sebuah file berekstensi **.sh** menggunakan editor apapun, misalnya `nano`, `vim`, atau `gedit`.
-  ```bash 
-  nano nama_file.sh
-  ```
-  Misalnya:
-  ```bash 
-  nano hello-sisop.sh
-  ```
+    ```bash 
+    nano nama_file.sh
+    ```
+    Misalnya:
+    ```bash 
+    nano hello-sisop.sh
+    ```
 2. Tulis beberapa baris perintah disana, diawali dengan **shebang** `#!/bin/bash`. Shebang berfungsi untuk memberitahu sistem bahwa perintah-perintah yg ada di dalam file tersebut harus dijalankan oleh Bourne Shell.
 
-  ![ss-2](/images/ss-2.png)
+    ![ss-2](/images/ss-2.png)
 
 3. Simpan dan ubah permission file script agar dapat dieksekusi.
-  ```bash
-  chmod +x nama_file.sh
-  ```
+    ```bash
+    chmod +x nama_file.sh
+    ```
 4. Eksekusi file script dengan cara `./nama_file.sh` atau `bash nama_file.sh`.
 
-  ![ss-1](/images/ss-1.png)
+    ![ss-1](/images/ss-1.png)
 
 ### 1.4 Variable
 * Nama variabel hanya boleh terdiri dari:
@@ -180,6 +177,7 @@ Ada 2 tipe shell utama di dalam sistem operasi Linux, yaitu:
 
 * Contoh:
     ```bash
+    sek
     ```
 
 ### 1.7 Operator Dasar
@@ -190,7 +188,7 @@ Ada 2 tipe shell utama di dalam sistem operasi Linux, yaitu:
   4. Operator String
   5. Operator File Test
 
-  Namun yang akan dibahas lebih jauh hanyalah operator **aritmatika** dan **relasional**.
+Namun yang akan dibahas lebih jauh hanyalah operator **aritmatika** dan **relasional**.
 
 #### Operator Aritmatika
 
@@ -466,7 +464,7 @@ fi
 * Contoh:
   ```bash
   #!/bin/bash
-
+  sek
   ```
 
 ### 1.11 Referensi 
