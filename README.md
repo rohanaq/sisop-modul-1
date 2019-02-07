@@ -234,7 +234,9 @@ ini contoh
     esac
     ```
 * Contoh:
-
+    ```bash
+    ini contoh
+    ```
 
 ### 1.9 Loop
 * **Loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali. Ada beberapa macam shell loops:
@@ -299,10 +301,28 @@ ini contoh
     ini contoh
     ```
 #### Nesting loops
-* Semua jenis loop mendukung konsep **nesting loop**, artinya kita dapat meletakkan loop di dalam loop, baik dalam jenis loop yang sama maupun berbeda.
+* Semua jenis loop mendukung konsep **nesting loop**, artinya kita dapat menggunakan loop di dalam loop, baik dengan jenis loop yang sama maupun berbeda.
+* Contoh nesting while loop
+    ```bash
+    ini contoh
+    ```
 
+### 1.10 Function
+* **Fungsi** digunakan untuk memecah fungsionalitas keseluruhan script menjadi sub-bagian yang lebih kecil. Sub-bagian itu dapat dipanggil untuk melakukan tugas masing-masing apabila diperlukan.
+* Syntax:
+    ```bash
+    **nama_fungsi** () { 
+        **perintah 1**
+        **perintah 2**
+        ...
+        **perintah n**
+    }
+    ```
+* Contoh:
+    ```bash
+    ```
 
-### 1.10 Function atau Subroutine 
+#### Nested Functions
 
 ## Referensi 
 * https://www.tutorialspoint.com/unix/shell_scripting.htm
