@@ -290,6 +290,7 @@ fi
 * Ada 2 jenis conditional statements dalam Unix shell, yaitu:
   1. **if...else**
   2. **case...esac**
+   
 #### If...Else
 * Syntax:
   ```bash
@@ -346,22 +347,22 @@ fi
   ```bash
   #!/bin/bash
 
-  echo -n "Apa makanan yang kamu suka? "
+  echo -n "Apa makanan yang kamu suka?"
   read makanan
 
   case "$makanan" in
-  "pentol") 
-    echo "Pentol paling enak sedunia adalah pentol raja depan wardug" 
-    ;;
-  "pisang")
-    echo "Hilo pisang enak, lho! (kata Nahda) Tapi itu minuman" 
-    ;;
-  "indomie")
-    echo "Indomie enak, apalagi pake telor" 
-    ;;
-  *)
-    echo "Maap, berarti makanan yang kamu suka gaenak hehe" 
-    ;;
+    "pentol") 
+      echo "Pentol paling enak sedunia adalah pentol raja depan wardug" 
+      ;;
+    "pisang")
+      echo "Hilo pisang enak, lho! (kata Nahda) Tapi itu minuman" 
+      ;;
+    "indomie")
+      echo "Indomie enak, apalagi pake telor" 
+      ;;
+    *)
+      echo "Maap, berarti makanan yang kamu suka gaenak hehe" 
+      ;;
   esac
   ```
 
@@ -470,11 +471,11 @@ fi
 * **Fungsi** digunakan untuk memecah fungsionalitas keseluruhan script menjadi sub-bagian yang lebih kecil. Sub-bagian itu dapat dipanggil untuk melakukan tugas masing-masing apabila diperlukan.
 * Syntax:
   ```bash
-  **nama_fungsi** () { 
-    **perintah 1**
-    **perintah 2**
+  nama_fungsi () { 
+    perintah1
+    perintah2
     ...
-    **perintah n**
+    perintahN
   }
   ```
 * Contoh:
@@ -505,7 +506,7 @@ ask_name() {
 }
 reply() {
   read nama
-  echo "Hai $nama, selamat datang di praktikum sistem operasi!"  
+  echo "Hai $nama, selamat datang di praktikum sistem operasi!"
 }
 
 #call functions

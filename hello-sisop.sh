@@ -175,3 +175,39 @@ do
 done
 echo "============================================="  
 
+#Quote
+echo "QUOTES"
+echo "============================================="  
+
+#Single quotes
+single=3
+echo '$single'
+
+#Double quotes
+double=3
+echo "$single"
+
+#Backslash
+echo siapa namamu\?
+
+#Backquotes
+date=`date`
+echo "Hari ini:" $date
+echo "============================================="  
+
+#Functions
+echo "FUNCTIONS"
+echo "============================================="  
+
+#define functions
+ask_name() {
+   echo "Siapa namamu?"
+}
+reply() {
+   read nama
+   echo "Hai $nama, selamat datang di praktikum sistem operasi!"  
+}
+
+#call functions
+ask_name
+reply
