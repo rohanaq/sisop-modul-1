@@ -193,7 +193,7 @@ Ada 2 tipe shell utama di dalam sistem operasi Linux, yaitu:
 
     #Backquotes
     var=`date`
-    echo var
+    echo "Hari ini:" $date
     ```
 
 ### 1.7 Operator Dasar
