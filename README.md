@@ -522,14 +522,14 @@ Cron memungkinkan pengguna Linux dan Unix untuk menjalankan perintah atau script
 1. Ketikkan `crontab -e`
 2. Ketikkan syntax crontab sesuai command yang diinginkan
 3. Untuk melihat entri crontab, jalankan command `crontab -l`
-* Syntax crontab:<br>
+* Syntax crontab<br>
   ![syntax-crontab](images/syntax.png)<br>
-* Contoh perintah yang dijalankan dengan cron:<br>
-![contoh-cron](images/contoh-cron.png)<br>
+* Contoh perintah yang dijalankan dengan cron<br>
+  ![contoh-cron](images/contoh-cron.png)<br>
   1. Menjalankan script routing setiap kali PC dinyalakan dan mencatatnya pada _route.log_
   2. Menjalankan script firewall setiap kali PC dinyalakan dan mencatatnya pada _iptables.log_<br>
 - Untuk lebih memahami crontab dapat mengakses website [crontab-guru](https://crontab.guru).
-![crontab-guru](images/crontab-guru.png)<br>
+    ![crontab-guru](images/crontab-guru.png)<br>
 
 ### 2.2 Referensi
 * https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/
@@ -560,31 +560,31 @@ tamtam rembang 1997 2016
 ```
 
 1. Secara default `awk` akan print semua baris pada file masukan:
-  ```shell
-  awk '{print}' mahasiswa.txt
-  ```
+    ```shell
+    awk '{print}' mahasiswa.txt
+    ```
 
 2. Print baris yang mengandung pola yang dimasukkan:
-  ```shell
-  awk '/sidoarjo/ {print}' mahasiswa.txt
-  ```
+    ```shell
+    awk '/sidoarjo/ {print}' mahasiswa.txt
+    ```
 
-  Maka hasilnya adalah sebagai berikut:
-  ```
-  hafara sidoarjo 1998 2015
-  awan sidoarjo 1996 2015
-  ```
+    Maka hasilnya adalah sebagai berikut:
+    ```
+    hafara sidoarjo 1998 2015
+    awan sidoarjo 1996 2015
+    ```
 
 3. Dalam setiap baris, `awk` akan membagi setiap kata yang dipisahkan oleh spasi dan menyimpannya pada variabel `$n`. Jika terdapat 4 kata pada satu baris, maka kata pertama akan disimpan pada variabel `$1`, kata kedua pada variabel `$2`, dan seterusnya. `$0` merepresentasikan semua kata yang ada pada satu baris.
-  ```shell
-  awk '/semarang/ {print $1,$2}' mahasiswa.txt
-  ```
+    ```shell
+    awk '/semarang/ {print $1,$2}' mahasiswa.txt
+    ```
 
-  Maka hasilnya adalah sebagai berikut:
-  ```
-  khawari semarang
-  aguel semarang
-  ```
+    Maka hasilnya adalah sebagai berikut:
+    ```
+    khawari semarang
+    aguel semarang
+    ```
 
 __Catatan__:
 Dalam rule program `awk` boleh menghilangkan hanya salah satu di antara action atau pola. Jika pola dihilangkan, maka action akan diberlakukan ke semua baris. Sedangkan jika action dihilangkan, maka setiap baris yang mengandung pola tersebut akan secara default ditampilkan secara penuh.
