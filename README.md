@@ -3,9 +3,9 @@
 
 ## Syarat Mengikuti Modul
 1. Linux OS 
-2. CLI (Command Line Interface)
+2. Paham CLI (Command Line Interface)
 
-n.b. Untuk penyegaran kembali terkait CLI, silahkan membaca [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
+Untuk penyegaran kembali terkait CLI, silahkan membaca [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
   
 ## Daftar Isi
   - [1. Shell Scripting](#1-shell-scripting)
@@ -168,12 +168,13 @@ Ada 2 tipe shell utama di dalam sistem operasi Linux, yaitu:
   * ? [ ] ' " \ $ ; & ( ) | ^ < > new-line space tab
   ```
 * Ada 4 jenis **quoting**, yaitu:
-  | No | Quoting | Deskripsi|
-  |---|---|---|
-  | 1 | Single Quotes (') | Semua metakarakter di antara single quotes akan kehilangan makna khusus |
-  | 2 | Double Quotes (") | Sebagian besar metakarakter di antara double quotes akan kehilangan makna khusus, kecuali `$, backquotes, \$, \', \", \\` |
-  | 3 | Backslash (\\) | Karakter apa pun setelah backslash akan kehilangan makna khusus |
-  | 4 | Backquotes (`) | Apa pun di antara back quote akan diperlakukan sebagai perintah dan akan dieksekusi |
+  
+    | No | Quoting | Deskripsi|
+    |---|---|---|
+    | 1 | Single Quotes (') | Semua metakarakter di antara single quotes akan kehilangan makna khusus |
+    | 2 | Double Quotes (") | Sebagian besar metakarakter di antara double quotes akan kehilangan makna khusus, kecuali `$, backquotes, \$, \', \", \\` |
+    | 3 | Backslash (\\) | Karakter apa pun setelah backslash akan kehilangan makna khusus |
+    | 4 | Backquotes (`) | Apa pun di antara back quote akan diperlakukan sebagai perintah dan akan dieksekusi |
 
 * Contoh:
     ```bash
@@ -615,12 +616,10 @@ Pada contoh di atas, rule kedua hanya memiliki action untuk melakukan perhitunga
 Anda diinputkan merupakan palindrom atau bukan.
 Contoh: malam = palindrom, makan != palindrom.
 2. Buatlah sebuah task scheduling menggunakan crontab dan sebuah bash script untuk memindahkan
-semua file mp3 ke /home/<user>/Music, semua file mp4 ke /home/<user>/Videos, dan semua file
-jpg ke /home/<user>/Pictures setiap satu menit. Awalnya, semua file mp3, mp4, dan jpg tersebut
-terletak di /home/<user>/Documents.
+semua file mp3 ke /home/\<user>/Music, semua file mp4 ke /home/\<user>/Videos, dan semua file
+jpg ke /home/\<user>/Pictures setiap satu menit. Awalnya, semua file mp3, mp4, dan jpg tersebut
+terletak di /home/\<user>/Documents.
 3. Buatlah sebuah program awk yang bisa menampilkan user yang melakukan proses. Tapi karena
 kemungkinan besar jumlah barisnya akan sangat banyak, maka tampilkan secara distinct (tidak ada
 user yang sama muncul lebih dari satu kali). Jika sudah bisa, coba masukkan hasilnya ke dalam file
 pengguna.log
-
-**Kalo mau ditambain silahkan**
