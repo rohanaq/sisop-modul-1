@@ -3,7 +3,7 @@
 
 ## Prasayarat
 1. Menginstall Sistem Operasi **Linux** 
-2. Paham CLI (Command Line Interface) - [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
+2. Paham **CLI (Command Line Interface)** - [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
    
 ## Daftar Isi
 
@@ -29,68 +29,67 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
    * TENEX/TOPS C Shell (tcsh)
 
 ### 1.2 Pemrograman Shell
-**Pemrograman shell** adalah menyusun beberapa perintah shell (internal maupun eksternal) menjadi serangkaian perintah untuk melakukan tugas tertentu. <br>
-Kelebihan shell di Linux adalah memungkinkan user untuk menyusun serangkaian perintah seperti halnya bahasa pemrograman interpreter, yakni melakukan proses input output, menyeleksi kondisi (decision making), looping, membuat fungsi, dsb. <br>
-Pemrograman shell di Unix/Linux juga disebut dengan **shell scripting**.Untuk memudahkan, shell script dapat disimpan ke dalam sebuah **file** yang dapat dieksekusi kapanpun kita inginkan.<br> 
-Manfaat belajar shell scripting:
+* **Pemrograman shell** adalah menyusun beberapa perintah shell (internal maupun eksternal) menjadi serangkaian perintah untuk melakukan tugas tertentu.
+* Kelebihan shell di Linux adalah memungkinkan user untuk menyusun serangkaian perintah seperti halnya bahasa pemrograman interpreter, yakni melakukan proses input output, menyeleksi kondisi (decision making), looping, membuat fungsi, dsb. 
+* Pemrograman shell di Unix/Linux juga disebut dengan **shell scripting**.Untuk memudahkan, shell script dapat disimpan ke dalam sebuah **file** yang dapat dieksekusi kapanpun kita inginkan.
+* Manfaat belajar shell scripting:
    1. Dapat bekerja secara efektif dan efisien karena tidak perlu mengetik serangkaian perintah secara berulang-ulang, cukup menulis dan mengeksekusi satu file saja
    2. Dapat menjalankan beberapa perintah sebagai satu perintah
    3. Dapat menjalankan perintah secara otomatis
 
 ### 1.3 Perintah Dasar Shell
+* Shell yang digunakan dalam modul ini adalah **Bash** karena paling banyak digunakan pada distro Linux. Untuk memastikan shell apa yang kalian gunakan, coba lakukan:
+  ```bash
+  $ echo $SHELL
+  ```
+* Shell memiliki perintah **internal** (built-in shell) dan perintah **eksternal**. Untuk mengecek apakah sebuah perintah termasuk internal atau eksternal, gunakan perintah `type`
+  ```bash
+  $ type cd
+  cd is a shell builtin
+  $ type bash
+  bash is /bin/bash
+  $ type read
+  read is a shell builtin 
+  $ type chmod
+  chmod is /bin/chmod
+  ```
+  * Contoh perintah **internal**: `cd, pwd, times, alias, umask, exit, logout, fg, bg, ls, mkdir, rmdir, mv, cp, rm, clear, ...`
+  * Contoh perintah **eksternal**: `cat, cut, paste, chmod, lpr,...`. Beberapa perintah eksternal dapat dilihat di [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
 
-Shell yang digunakan dalam modul ini adalah **Bash** karena paling banyak digunakan pada distro Linux. Untuk memastikan shell apa yang kalian gunakan, coba lakukan:
-```bash
-$ echo $SHELL
-```
-Shell memiliki perintah **internal** (built-in shell) dan perintah **eksternal**. Untuk mengecek apakah sebuah perintah termasuk internal atau eksternal, gunakan perintah `type`
-```bash
-$ type cd
-cd is a shell builtin
-$ type bash
-bash is /bin/bash
-$ type read
-read is a shell builtin 
-$ type chmod
-chmod is /bin/chmod
-```
-* Contoh perintah internal: `cd, pwd, times, alias, umask, exit, logout, fg, bg, ls, mkdir, rmdir, mv, cp, rm, clear, ...`
-* Contoh perintah eksternal: `cat, cut, paste, chmod, lpr,...`. Beberapa perintah eksternal dapat dilihat di [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
+* Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell:
+  1. **Redirection** (mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <, <<`, contoh:
+      ```bash
+      ls > data
+      #hasil output ls dikirim ke file data. jika file belum ada akan dibuat, tetapi jika sudah ada, isinya akan ditimpa
 
-Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell:
-1. **Redirection** (mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <, <<`, contoh:
-    ```bash
-    ls > data
-    #hasil output ls dikirim ke file data. jika file belum ada akan dibuat, tetapi jika sudah ada, isinya akan ditimpa
+      ls >> data
+      #hampir sama, bedanya jika file sudah ada maka isinya akan ditambah di akhir file
 
-    ls >> data
-    #hampir sama, bedanya jika file sudah ada maka isinya akan ditambah di akhir file
+      cat < data
+      #file data dijadikan input oleh perintah cat
+      ```
+  2. **Pipe** (output suatu perintah menjadi input perintah lain) menggunakan operator `|`, contoh:
+      ```bash
+      ls -l | sort -s
+      #ouput perintah ls -l menjadi input perintah sort -s (urutkan secara descending)
 
-    cat < data
-    #file data dijadikan input oleh perintah cat
-    ```
-2. **Pipe** (output suatu perintah menjadi input perintah lain) menggunakan operator `|`, contoh:
-    ```bash
-    ls -l | sort -s
-    #ouput perintah ls -l menjadi input perintah sort -s (urutkan secara descending)
+      cat < data | sort > databaru
+      ```
+  3. **Wildcard** menggunakan karakter `*, ?, [ ]`, contoh:
+      ```bash
+      ls i*
+      #tampilkan semua file yang dimulai dengan i
 
-    cat < data | sort > databaru
-    ```
-3. **Wildcard** menggunakan karakter `*, ?, [ ]`, contoh:
-    ```bash
-    ls i*
-    #tampilkan semua file yang dimulai dengan i
+      ls i?i
+      #tampilkan file yang dimulai dengan i, kemudian sembarang karakter tunggal, dan diakhiri dengan i
 
-    ls i?i
-    #tampilkan file yang dimulai dengan i, kemudian sembarang karakter tunggal, dan diakhiri dengan i
-
-    ls [ab]*
-    #tampilkan file yang dimulai dengan salah satu karakter a atau b
-    ```
-Untuk melihat informasi secara lengkap, silahkan membuka manual bash dengan:
-```bash
-man bash
-```
+      ls [ab]*
+      #tampilkan file yang dimulai dengan salah satu karakter a atau b
+      ```
+* Untuk melihat informasi secara lengkap, silahkan membuka manual bash dengan:
+  ```bash
+  man bash
+  ```
 
 ### 1.4 Simple Shell Script
 1. Buatlah sebuah file berekstensi **.sh** menggunakan editor apapun, misalnya `nano`, `vi`, atau `gedit`.
@@ -117,8 +116,7 @@ man bash
     ![ss-1](/images/ss-1.png)
 
 ### 1.4 Variabel
-
-Beberapa hal yang perlu diperhatikan dalam mendefinisikan variabel:
+* Beberapa hal yang perlu diperhatikan dalam mendefinisikan variabel:
    1. Nama variabel hanya boleh terdiri dari:
         * **Huruf** (a-z dan A-Z)
         * **Angka** (0-9)
@@ -127,159 +125,180 @@ Beberapa hal yang perlu diperhatikan dalam mendefinisikan variabel:
    3. Tidak boleh menggunakan karakter spesial seperti `!, *, $, #, -`, dll karena karakter tersebut punya makna khusus untuk shell
    4. Bersifat case sensitive (membedakan huruf besar dan kecil)
 
-**Syntax** 
-* Mendefinisikan variabel
-  ```bash
-  nama_var=nilai
-  ```
-* Mengakses variabel
-  ```bash
-  $nama_var
-  ```
-**Tipe-Tipe Variabel**
-* String
-  ```bash
-  nama_var="string"
-  ```
-* Integer
-  ```bash
-  nama_var=nilai
-  ```
-* Array
-  ```bash
-  #Jika isi array berupa string
-  nama_var=("string0" "string1" "string2" ... "stringN")
-  
-  #Jika isi array berupa integer
-  nama_var=(nilai0 nilai1 nilai2 ... nilaiN)    
-  ```
+* Syntax 
+  * Mendefinisikan variabel
+    ```bash
+    nama_var=nilai
+    ```
+  * Mengakses variabel
+    ```bash
+    $nama_var
+    ```
+* Tipe-Tipe Variabel
+  * String
+    ```bash
+    nama_var="string"
+    ```
+  * Integer
+    ```bash
+    nama_var=nilai
+    ```
+  * Array
+    ```bash
+    #Jika isi array berupa string
+    nama_var=("string0" "string1" "string2" ... "stringN")
+    
+    #Jika isi array berupa integer
+    nama_var=(nilai0 nilai1 nilai2 ... nilaiN)    
+    ```
 
-Contoh:
+* Contoh:
 
-```bash
-#!/bin/bash
+  ```bash
+  #!/bin/bash
 
-mata_kuliah="Sistem Operasi A"
-semester=4
-mahasiswa=("Khawari" "Raldo" "Aguel" "Tamtam")
+  mata_kuliah="Sistem Operasi A"
+  semester=4
+  mahasiswa=("Khawari" "Raldo" "Aguel" "Tamtam")
 
-echo "Variabel string:" $mata_kuliah
-echo "Variabel integer:" $semester
-echo "Variabel array ke-3:" ${mahasiswa[2]}
-```
-Output:
+  echo "Variabel string:" $mata_kuliah
+  echo "Variabel integer:" $semester
+  echo "Variabel array ke-3:" ${mahasiswa[2]}
+  ```
+  Output:
 
-![ss-6](/images/ss-6.png)
-  
-Catatan:
-* Syntax array diatas hanya dapat dieksekusi oleh **bash**, sehingga harus dieksekusi dengan cara `bash nama_file.sh` atau `bash ./nama_file.sh`. Jika menggunakan `./nama_file.sh` saja akan muncul error:
-  
-  ![ss-3](/images/ss-3.png)
+  ![ss-6](/images/ss-6.png)
+    
+  Catatan:
+  * Syntax array diatas hanya dapat dieksekusi oleh **bash**, sehingga harus dieksekusi dengan cara `bash nama_file.sh` atau `bash ./nama_file.sh`. Jika menggunakan `./nama_file.sh` saja akan muncul error:
+    
+    ![ss-3](/images/ss-3.png)
 
 #### Special Variable
+* Beberapa special variable yang sering dipakai:
 
-*Beberapa special variable yang sering dipakai:
+  | Variabel | Deskripsi |
+  |---|---|
+  | $0 | Berisi nama file script yang sedang dijalankan |
+  | $n | n disini adalah angka desimal positif yang sesuai dengan posisi argumen (argumen pertama adalah `$1`, argumen kedua adalah `$2`, dst) |
+  | $# | Jumlah argumen yang diinput pada script |
+  | $* | Semua argumen $n |
+  | $? | Status exit dari perintah terakhir yang dijalankan |
+  | $$ | Proses ID (PID) shell saat ini |
 
-| Variabel | Deskripsi |
-|---|---|
-| $0 | Berisi nama file script yang sedang dijalankan |
-| $n | n disini adalah angka desimal positif yang sesuai dengan posisi argumen (argumen pertama adalah `$1`, argumen kedua adalah `$2`, dst) |
-| $# | Jumlah argumen yang diinput pada script |
-| $* | Semua argumen $n |
-| $? | Status exit dari perintah terakhir yang dijalankan |
-| $$ | Proses ID (PID) shell saat ini |
+* Contoh:
 
-Contoh:
+  ```bash
+  #!/bin/bash
 
-```bash
-#!/bin/bash
+  echo "Nama script : $0"
+  echo "Argumen ke-1 : $1"
+  echo "Argumen ke-2 : $2"
+  echo "Hai $1, selamat datang di kelas $2!"
+  echo "Total argumen : $#"
+  echo "Semua argumen : $*"
+  echo "PID : $$" 
+  ```
+  Output:
 
-echo "Nama script : $0"
-echo "Argumen ke-1 : $1"
-echo "Argumen ke-2 : $2"
-echo "Hai $1, selamat datang di kelas $2!"
-echo "Total argumen : $#"
-echo "Semua argumen : $*"
-echo "PID : $$" 
-```
-Output:
-
-![ss-2](/images/ss-2.png)
+  ![ss-2](/images/ss-2.png)
 
 ### 1.5 Input Output
 
-**Read** digunakan untuk mengambil input dari keyboard dengan syntax sebagai berikut:
-```bash
-read nama_var
-```  
-**Echo** digunakan untuk menampilkan output dengan syntax sebagai berikut:
-```bash
-#Menampilkan teks biasa
-echo "teks"
+* **read** digunakan untuk mengambil input dari keyboard dengan syntax sebagai berikut:
+  ```bash
+  read nama_var
+  ```  
+* **echo** digunakan untuk menampilkan output dengan syntax sebagai berikut:
+  ```bash
+  #Menampilkan teks biasa
+  echo "teks"
 
-#Menampilkan isi dari sebuah variabel
-echo $nama_var
-```
+  #Menampilkan isi dari sebuah variabel
+  echo $nama_var
+  ```
+  Catatan:
+  * Jika ingin menggunakan **new line character** (\n) pada echo, gunakan `echo -e "teks\n teks"`
 
-Contoh:
-```bash
-#!/bin/bash
+* Contoh:
+  ```bash
+  #!/bin/bash
 
-echo "Siapa namamu?"
-read nama
-echo "Hai $nama, selamat datang di praktikum sistem operasi!"
-```
-Output:
+  matakuliah="Sistem Operasi"
 
-![ss-5](images/ss-5.png)
+  echo "Siapa namamu?"
+  read nama
+  echo -e "\nHai $nama!\nSelamat datang di praktikum $matakuliah:))))"
+  ```
+  Output:
+
+  ![ss-5](images/ss-5.png)
+
+* Selain echo, bash juga menyediakan perintah builtin **printf** untuk menampilkan output dengan format tertentu, mirip bahasa C. Contoh:
+  ```bash
+  #!/bin/bash
+
+  matkul="Sisop";
+  angka=32;
+
+  printf "Coba enter\n\tdi bash\n";
+  printf "Matakuliah %s\n" $matkul;
+  printf "%d decimal dalam float = %.2f\n" $angka $angka
+  ```
+  Output:
+
+  ![ss-7](images/ss-7.png)
+
 
 ### 1.6 Quoting 
-Shell Unix/Linux memiliki beberapa karakter spesial yang disebut dengan **metakarakter**. Karakter tersebut punya makna khusus jika digunakan di dalam shell script. Beberapa macam metakarakter:
-```bash
-* ? [ ] ' " \ $ ; & ( ) | ^ < > new-line space tab
-```
-Ada 4 jenis **quoting**, yaitu:
+* Shell Unix/Linux memiliki beberapa karakter spesial yang disebut dengan **metakarakter**. Karakter tersebut punya makna khusus jika digunakan di dalam shell script. Beberapa macam metakarakter:
+  ```bash
+  * ? [ ] ' " \ $ ; & ( ) | ^ < > new-line space tab
+  ```
+
+* Ada 4 jenis **quoting**, yaitu:
   
-| No | Quoting | Deskripsi|
-|---|---|---|
-| 1 | Single Quote (') | Semua metakarakter di antara single quote akan kehilangan makna khusus |
-| 2 | Double Quote (") | Sebagian besar metakarakter di antara double quote akan kehilangan makna khusus, kecuali `$, backquote, \$, \', \", \\` |
-| 3 | Backslash (\\) | Karakter apa pun setelah backslash akan kehilangan makna khusus |
-| 4 | Backquote (`) | Apa pun di antara back quote akan diperlakukan sebagai perintah dan akan dieksekusi |
+  | No | Quoting | Deskripsi|
+  |---|---|---|
+  | 1 | Single Quote (') | Semua metakarakter di antara single quote akan kehilangan makna khusus |
+  | 2 | Double Quote (") | Sebagian besar metakarakter di antara double quote akan kehilangan makna khusus, kecuali `$, backquote, \$, \', \", \\` |
+  | 3 | Backslash (\\) | Karakter apa pun setelah backslash akan kehilangan makna khusus |
+  | 4 | Backquote (`) | Apa pun di antara back quote akan diperlakukan sebagai perintah dan akan dieksekusi |
 
-Contoh:
-```bash
-#!/bin/bash
+* Contoh:
+  ```bash
+  #!/bin/bash
 
-#Single quote
-single=3
-echo '$single'
+  #Single quote
+  single=3
+  echo '$single'
 
-#Double quote
-double=3
-echo "$single"
+  #Double quote
+  double=3
+  echo "$single"
 
-#Backslash
-echo \<-\$1500.\*\*\>\; \(update\?\) \[y\|n\]
+  #Backslash
+  echo \<-\$1500.\*\*\>\; \(update\?\) \[y\|n\]
 
-#Backquote
-date=`date`
-echo "Hari ini:" $date
-```
+  #Backquote
+  date=`date`
+  echo "Hari ini:" $date
+  ```
 
-Output:
+  Output:
 
-![ss-4](/images/ss-4.png)
+  ![ss-4](/images/ss-4.png)
 
 
-**Backslash Character**
+* **Backslash Character**
 
-| Karakter | Deskripsi |
-|---|---|
-| \n | New line (baris baru) |
-| \a | Alert bell |
-| \b | Backspace |
-| \E | Escape character |
+  | Karakter | Deskripsi |
+  |---|---|
+  | \n | New line (baris baru) |
+  | \a | Alert bell |
+  | \b | Backspace |
+
+  Lebih banyak dapat dilihat sendiri di `man bash`
 
 ### 1.7 Operator Dasar
 * Ada beberapa jenis operator yang didukung oleh shell, yaitu:
@@ -289,9 +308,9 @@ Output:
   4. Operator String
   5. Operator File Test
 
-Namun yang akan dibahas lebih jauh hanyalah operator **aritmatika** dan **relasional**.
+  Namun yang akan dibahas lebih jauh hanyalah operator **aritmatika** dan **relasional**.
 
-#### Operator Aritmatika
+#### 1.7.1 Operator Aritmatika
 
 | No | Operator | Deskripsi | 
 |---|---|---|
@@ -304,24 +323,45 @@ Namun yang akan dibahas lebih jauh hanyalah operator **aritmatika** dan **relasi
 | 7 | == | Membandingkan 2 nilai yang sama |
 | 8 | != | Membandingkan 2 nilai yang tidak sama |
 
-Contoh:
-```bash
-#!/bin/bash
+* Ada 3 cara yang dapat digunakan untuk melakukan operasi matematika, yaitu:
+  1. Menggunakan perintah built-in **let**
+  2. Menggunakan perintah eksternal **expr** atau **awk** 
+  3. Menggunakan perintah subtitusi ` $((ekspresi))`
 
-A=15
-B=7
+* Contoh:
+  ```bash
+  #!/bin/bash
 
-echo "$A + $B = $((A + B))"
-echo "$A - $B = $((A - B))"
-echo "$A * $B = $((A * B))"
-echo "$A / $B = $((A / B))"
-echo "$A % $B = $((A % B))"
+  a=15
+  b=7
 
-B=$A
+  #memakai let
+  let jumlah=$a+$b
+  let kurang=$a-$b
+  let kali=$a*$b
 
-echo "A = $A"
-echo "B = $B"
-```
+  #memakai expr
+  bagi=`expr $a / $b`
+
+  #memakai perintah subtitusi $((ekspresi))
+  modulus=$(($a % $b)) 
+  
+  echo "a + b = $jumlah"
+  echo "a - b = $kurang"
+  echo "a * b = $kali"
+  echo "a / b = $bagi"
+  echo "a % b = $mod"
+
+  b=$a
+
+  echo "a = $a"
+  echo "b = $b"
+  ```
+  
+  Output:
+
+  ![ss-8](/images/ss-8.png)
+
 #### Operator Relasional
 
 | No | Operator | Deskripsi | 
@@ -333,43 +373,26 @@ echo "B = $B"
 | 5 | -ge | Memeriksa apakah nilai operan kiri lebih besar atau sama dengan operan kanan (>=) |
 | 6 | -le | Memeriksa apakah nilai operan kiri lebih kecil atau sama dengan operan kanan (<=) |
 
-Operator relasional biasanya digunakan bersama dengan conditional statements, contoh:
-```bash
-#!/bin/bash
+* Operator relasional biasanya digunakan bersama dengan conditional statements, contoh:
+  ```bash
+  #!/bin/bash
 
-A=15
-B=7
+  a=15
+  b=7
 
-if [ $A -eq $B ]
-then
-   echo "$A -eq $B: A sama dengan B"
-else
-   echo "$A -eq $B: A tidak sama dengan B"
-fi
+  if [ $a -eq $b ]
+  then
+    echo "$a -eq $b: a sama dengan b"
+  else
+    echo "$a -eq $b: a tidak sama dengan b"
+  fi
+  ```
+  Output:
+  ```bash
+  15 -eq 7: a tidak sama dengan b
+  ```
+  
 
-if [ $A -ne $B ]
-then
-   echo "$A -ne $B: A tidak sama dengan B"
-else
-   echo "$A -ne $B: A sama dengan B"
-fi
-
-if [ $A -gt $B ]
-then
-   echo "$A -gt $B: A lebih besar dari B"
-else
-   echo "$A -gt $B: A lebih kecil dari B"
-fi
-
-...
-
-if [ $A -le $B ]
-then
-   echo "$A -le $B: A lebih kecil atau sama dengan B"
-else
-   echo "$A -le $B: A lebih besar dari B"
-fi
-```
 ### 1.8 Conditional Statements
 * **Conditional statements** digunakan untuk memungkinkan program dapat membuat keputusan yang benar dengan memilih tindakan tertentu berdasarkan syarat/kondisi tertentu.
 * Ada 2 jenis conditional statements dalam Unix shell, yaitu:
@@ -377,54 +400,55 @@ fi
   2. **case...esac**
    
 #### If...Else
-* Syntax:
+* Syntax
   ```bash
   if [ kondisi1 ]
   then 
-    perintah1 #dieksekusi jika kondisi1 benar
+    perintah1 
   elif [ kondisi2 ]
   then
-    perintah2 #dieksekusi jika kondisi2 benar
+    perintah2 
   else
-    tindakan3 dieksekusi jika tidak ada kondisi yang benar
+    alternatif_perintah
   fi
   ```
 * Contoh:
   ```bash
   #!/bin/bash
 
-  A=15
-  B=7
+  a=15
+  b=7
 
-  if [ $A == $B ]
+  if [ $a == $b ]
   then
-    echo "A sama dengan B"
-  elif [ $A -gt $B ]
+    echo "a sama dengan b"
+  elif [ $a -gt $b ]
   then
-    echo "A lebih besar dari B"
-  elif [ $A -lt $B ]
+    echo "a lebih besar dari b"
+  elif [ $a -lt $b ]
   then
-    echo "A lebih kecil dari B"
+    echo "a lebih kecil dari b"
   else
     echo "Tidak ada kondisi yang memenuhi"
   fi
   ```
+  Output:
+  ```bash
+  a lebih besar dari b
+  ```
 
 #### Case...Esac
-* Syntax:
+* Syntax
   ```bash
-  case nama_var in
+  case var in
     pola1)
-      perintah1 #dieksekusi jika pola1 cocok
+      perintah1 
       ;;
     pola2)
-      perintah2 #dieksekusi jika pola2 cocok
-      ;;
-    pola3)
-      perintah3 #dieksekusi jika pola3 cocok
+      perintah2 
       ;;
     *)
-      perintah4 #dieksekusi jika tidak ada pola yang cocok
+      alternatif_perintah
       ;;
   esac
   ```
@@ -437,19 +461,22 @@ fi
 
   case "$makanan" in
     "pentol") 
-      echo "Pentol paling enak sedunia adalah pentol raja depan wardug" 
+      echo "Pentol raja depan wardug the best!" 
       ;;
     "pisang")
-      echo "Hilo pisang enak, lho! (kata Nahda) Tapi itu minuman" 
+      echo "Pocky rasa pisang enak bed" 
       ;;
     "indomie")
-      echo "Indomie enak, apalagi pake telor" 
+      echo "Indomie telor unch" 
       ;;
     *)
-      echo "Maap, berarti makanan yang kamu suka gaenak hehe" 
+      echo "Makanan yang kamu suka gaenak hehe" 
       ;;
   esac
   ```
+  Output:
+
+  ![ss-9](/images/ss-9.png)
 
 ### 1.9 Loop
 * **Loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali. Ada beberapa macam shell loops:
@@ -461,11 +488,11 @@ fi
 #### While loop
 * **While loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali **selama** suatu kondisi terpenuhi.
 * While digunakan jika kita ingin memanipulasi suatu variabel secara berulang-ulang.
-*  Syntax:
+*  Syntax
     ```bash
     while kondisi
     do
-      perintah #dieksekusi jika kondisi masih terpenuhi
+      perintah 
     done
     ```
 * Contoh:
@@ -477,35 +504,51 @@ fi
   while [ $a -lt 10 ]
   do
     echo $a
-    a=$((a + 1))
+    a=$((a + 2))
   done
+  ```
+  Output:
+  ```bash
+  0
+  2
+  4
+  6
+  8
   ```
 #### For loop
 * **For loop** digunakan untuk mengulang serangkaian perintah untuk setiap item pada daftar.
-* Syntax:
+* Syntax
     ```bash
     for var in daftar_item
     do
-      perintah #dieksekusi untuk setiap item dalam daftar
+      perintah 
     done
     ```
 * Contoh:
     ```bash
     #!/bin/bash
 
-    for num in 0 1 2 3 4 5 6 7 8 9
+    for num in 1 2 3 4 5
     do
       echo $num
     done
     ```
+    Output:
+    ```bash
+    1
+    2
+    3
+    4
+    5
+    ```
 
 #### Until loop
-* Berbeda dengan while loop, **until loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali **sampai** suatu kondisi terpenuhi.
-*  Syntax:
+* Berbeda dengan while, **until loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali **sampai** suatu kondisi terpenuhi.
+*  Syntax
     ```bash
     until kondisi
     do
-      perintah #dieksekusi jika kondisi belum terpenuhi
+      perintah
     done
     ```
 * Contoh:
@@ -517,17 +560,25 @@ fi
     until [ ! $a -lt 10 ]
     do
       echo $a
-      a=$((a + 1))
+      a=$((a + 2))
     done
+    ```
+    Output:
+    ```bash
+    0
+    2
+    4
+    6
+    8
     ```
 
 #### Select loop
-* **Select loop** digunakan ketika kita ingin membuat sebuah program dengan beberapa daftar pilihan yang bisa dipilih oleh pengguna, misalnya menu.
-*  Syntax:
+* **Select loop** digunakan ketika kita ingin membuat sebuah program dengan beberapa daftar pilihan yang bisa dipilih oleh user, misalnya daftar menu.
+*  Syntax
     ```bash
     select var in daftar_item
     do
-      perintah #dieksekusi untuk setiap item dalam daftar
+      perintah
     done
     ```
 * Contoh:
@@ -538,23 +589,59 @@ fi
     do
       case $minuman in
         teh|kopi|air|semua) 
-          echo "Beli di warung!"
+          echo "Maaf, habis"
           ;;
         jus|susu)
-          echo "Bikin sendiri di rumah!"
+          echo "Tersedia"
         ;;
         gaada) 
           break 
         ;;
-        *) echo "ERROR" 
+        *) echo "Tidak ada di daftar menu" 
         ;;
       esac
     done
     ```
+    Output:
 
+    ![ss-10](/images/ss-10.png)
+
+#### Nesting Loops
+* Semua jenis loop di atas mendukung konsep nesting, artinya kita dapat menempatkan satu loop ke dalam loop lain, baik loop yang sejenis maupun berbeda jenis
+* Contoh:
+  ```bash
+  #!/bin/sh
+
+  a=0
+
+  while [ "$a" -lt 10 ]    #loop1
+  do
+    b="$a"
+    while [ "$b" -ge 0 ]  #loop2
+    do
+        echo -n "$b "
+        b=`expr $b - 1`
+    done
+    echo
+    a=`expr $a + 1`
+  done
+  ```
+  Output:
+  ```bash
+  0 
+  1 0 
+  2 1 0 
+  3 2 1 0 
+  4 3 2 1 0 
+  5 4 3 2 1 0 
+  6 5 4 3 2 1 0 
+  7 6 5 4 3 2 1 0 
+  8 7 6 5 4 3 2 1 0 
+  9 8 7 6 5 4 3 2 1 0 
+  ```
 ### 1.10 Function
 * **Fungsi** digunakan untuk memecah fungsionalitas keseluruhan script menjadi sub-bagian yang lebih kecil. Sub-bagian itu dapat dipanggil untuk melakukan tugas masing-masing apabila diperlukan.
-* Syntax:
+* Syntax
   ```bash
   nama_fungsi () { 
     perintah1
@@ -580,6 +667,10 @@ fi
   ask_name
   reply
   ```
+  Output:
+
+  ![ss-11](/images/ss-11.png)
+
 #### Nested Functions
 ```bash
 #!/bin/bash
@@ -587,7 +678,7 @@ fi
 #define functions
 ask_name() {
   echo "Siapa namamu?"
-  reply
+  reply                 #call reply function inside ask_name function
 }
 reply() {
   read nama
@@ -600,14 +691,15 @@ ask_name
 
 ### 1.11 Referensi 
 * https://www.tutorialspoint.com/unix/shell_scripting.htm
-
+* https://pemula.linux.or.id/programming/bash-shell.html
+  
 ## 2. Cron
-Cron memungkinkan pengguna Linux dan Unix untuk menjalankan perintah atau script pada waktu tertentu secara otomatis. Cron service (daemon) secara konstan memeriksa _/etc/crontab_ file dan _/etc/cron.*/_ direktori juga _/var/spool/cron_ direktori. Setiap user memiliki crontab file masing-masing.
+* Cron memungkinkan user Linux dan Unix untuk menjalankan perintah atau script pada waktu tertentu secara otomatis. Cron service (daemon) secara konstan memeriksa _/etc/crontab_ file dan _/etc/cron.*/_ direktori juga _/var/spool/cron_ direktori. Setiap user memiliki crontab file masing-masing.
 
 ### 2.1 Menambahkan atau mengubah cron job
-1. Ketikkan `crontab -e`
-2. Ketikkan syntax crontab sesuai command yang diinginkan
-3. Untuk melihat entri crontab, jalankan command `crontab -l`
+* Ketikkan `crontab -e`
+* Ketikkan syntax crontab sesuai command yang diinginkan
+* Untuk melihat entri crontab, jalankan command `crontab -l`
 * Syntax crontab<br>
   ![syntax-crontab](images/syntax.png)<br>
 * Contoh perintah yang dijalankan dengan cron<br>
@@ -708,4 +800,4 @@ terletak di /home/\<user>/Documents.
 3. Buatlah sebuah program awk yang bisa menampilkan user yang melakukan proses. Tapi karena
 kemungkinan besar jumlah barisnya akan sangat banyak, maka tampilkan secara distinct (tidak ada
 user yang sama muncul lebih dari satu kali). Jika sudah bisa, coba masukkan hasilnya ke dalam file
-pengguna.log (Hint: menggunakan pipe dan command ps)
+user.log (Hint: menggunakan pipe dan command ps)
