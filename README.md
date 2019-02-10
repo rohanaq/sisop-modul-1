@@ -163,7 +163,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
   echo "Variabel string:" $mata_kuliah
   echo "Variabel integer:" $semester
-  echo "Variabel array ke-3:" ${mahasiswa[2]}
+  echo "Variabel array ke-1:" ${mahasiswa[0]}
   ```
   Output:
 
@@ -694,7 +694,7 @@ ask_name
 * https://pemula.linux.or.id/programming/bash-shell.html
   
 ## 2. Cron
-* Cron memungkinkan user Linux dan Unix untuk menjalankan perintah atau script pada waktu tertentu secara otomatis. Cron service (daemon) secara konstan memeriksa _/etc/crontab_ file dan _/etc/cron.*/_ direktori juga _/var/spool/cron_ direktori. Setiap user memiliki crontab file masing-masing.
+Cron memungkinkan user Linux dan Unix untuk menjalankan perintah atau script pada waktu tertentu secara otomatis. Cron service (daemon) secara konstan memeriksa _/etc/crontab_ file dan _/etc/cron.*/_ direktori juga _/var/spool/cron_ direktori. Setiap user memiliki crontab file masing-masing.
 
 ### 2.1 Menambahkan atau mengubah cron job
 * Ketikkan `crontab -e`
