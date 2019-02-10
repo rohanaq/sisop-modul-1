@@ -187,7 +187,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   ```bash
   #!/bin/bash
 
-  mata_kuliah="Sistem Operasi A"
+  mata_kuliah="Sistem Operasi"
   semester=4
   mahasiswa=("Khawari" "Raldo" "Aguel" "Tamtam")
 
@@ -559,6 +559,15 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
     #!/bin/bash
 
     for num in 1 2 3 4 5
+    do
+      echo $num
+    done
+    ```
+    Selain itu, bisa ditulis seperti ini:
+    ```bash
+    #!/bin/bash
+
+    for ((num=1; num<=5; num=num+1))
     do
       echo $num
     done
