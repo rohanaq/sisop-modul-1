@@ -6,6 +6,38 @@
 2. Paham **CLI (Command Line Interface)** - [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
    
 ## Daftar Isi
+  - [1. Shell Scripting](#1-shell-scripting)
+    - [1.1 Shell](#11-shell)
+    - [1.2 Pemrograman Shell](#12-pemrograman-shell)
+    - [1.3 Perintah Dasar Shell](#13-perintah-dasar-shell)
+    - [1.4 Simple Shell Script](#14-simple-shell-script)
+    - [1.5 Variabel](#15-variabel)
+      - [1.5.1 Special Variable](#151-special-variable)
+    - [1.6 Input Output](#16-input-output)
+    - [1.7 Quoting](#17-quoting)
+    - [1.8 Operator Dasar](#18-operator-dasar)
+      - [1.8.1 Operator Aritmatika](#181-operator-aritmatika)
+      - [1.8.2 Operator Relasional](#182-operator-relasional)
+    - [1.9 Conditional Statements](#19-conditional-statements)
+      - [1.9.1 If...Else](#191-ifelse)
+      - [1.9.2 Case...Esac](#192-caseesac)
+    - [1.10 Loop](#110-loop)
+      - [1.10.1 While loop](#1101-while-loop)
+      - [1.10.2 For loop](#1102-for-loop)
+      - [1.10.3 Until loop](#1103-until-loop)
+      - [1.10.4 Select loop](#1104-select-loop)
+      - [1.10.5 Nesting Loops](#1105-nesting-loops)
+    - [1.11 Function](#111-function)
+      - [1.11.1 Nested Functions](#1111-nested-functions)
+    - [1.12 Referensi](#112-referensi)
+  - [2. Cron](#2-cron)
+    - [2.1 Menambahkan atau mengubah cron job](#21-menambahkan-atau-mengubah-cron-job)
+    - [2.2 Referensi](#22-referensi)
+  - [3. AWK](#3-awk)
+    - [3.1 Menjalankan program awk](#31-menjalankan-program-awk)
+    - [3.2 Special Rules](#32-special-rules)
+    - [3.3 Referensi](#33-referensi)
+  - [4. Latihan](#4-latihan)
 
 ## 1. Shell Scripting
 ### 1.1 Shell
@@ -31,11 +63,11 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 ### 1.2 Pemrograman Shell
 * **Pemrograman shell** adalah menyusun beberapa perintah shell (internal maupun eksternal) menjadi serangkaian perintah untuk melakukan tugas tertentu.
 * Kelebihan shell di Linux adalah memungkinkan user untuk menyusun serangkaian perintah seperti halnya bahasa pemrograman interpreter, yakni melakukan proses input output, menyeleksi kondisi (decision making), looping, membuat fungsi, dsb. 
-* Pemrograman shell di Unix/Linux juga disebut dengan **shell scripting**.Untuk memudahkan, shell script dapat disimpan ke dalam sebuah **file** yang dapat dieksekusi kapanpun kita inginkan.
+* Pemrograman shell di Unix/Linux juga disebut dengan **shell scripting**. Untuk memudahkan, shell script dapat disimpan ke dalam sebuah **file** yang dapat dieksekusi kapanpun kita inginkan.
 * Manfaat belajar shell scripting:
-   1. Dapat bekerja secara efektif dan efisien karena tidak perlu mengetik serangkaian perintah secara berulang-ulang, cukup menulis dan mengeksekusi satu file saja
-   2. Dapat menjalankan beberapa perintah sebagai satu perintah
-   3. Dapat menjalankan perintah secara otomatis
+  * Dapat bekerja secara efektif dan efisien karena tidak perlu mengetik serangkaian perintah secara berulang-ulang, cukup menulis dan mengeksekusi satu file saja
+  * Dapat menjalankan beberapa perintah sebagai satu perintah
+  * Dapat menjalankan perintah secara otomatis
 
 ### 1.3 Perintah Dasar Shell
 * Shell yang digunakan dalam modul ini adalah **Bash** karena paling banyak digunakan pada distro Linux. Untuk memastikan shell apa yang kalian gunakan, coba lakukan:
@@ -57,7 +89,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   * Contoh perintah **eksternal**: `cat, cut, paste, chmod, lpr,...`. Beberapa perintah eksternal dapat dilihat di [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
 
 * Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell:
-  1. **Redirection** (mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <, <<`, contoh:
+  * **Redirection** (mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <, <<`, contoh:
       ```bash
       ls > data
       #hasil output ls dikirim ke file data. jika file belum ada akan dibuat, tetapi jika sudah ada, isinya akan ditimpa
@@ -68,14 +100,12 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
       cat < data
       #file data dijadikan input oleh perintah cat
       ```
-  2. **Pipe** (output suatu perintah menjadi input perintah lain) menggunakan operator `|`, contoh:
+  * **Pipe** (output suatu perintah menjadi input perintah lain) menggunakan operator `|`, contoh:
       ```bash
       ls -l | sort -s
       #ouput perintah ls -l menjadi input perintah sort -s (urutkan secara descending)
-
-      cat < data | sort > databaru
       ```
-  3. **Wildcard** menggunakan karakter `*, ?, [ ]`, contoh:
+  * **Wildcard** menggunakan karakter `*, ?, [ ]`, contoh:
       ```bash
       ls i*
       #tampilkan semua file yang dimulai dengan i
@@ -86,7 +116,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
       ls [ab]*
       #tampilkan file yang dimulai dengan salah satu karakter a atau b
       ```
-* Untuk melihat informasi secara lengkap, silahkan membuka manual bash dengan:
+* Untuk melihat informasi selengkapnya tentang bash shell, silahkan membuka manual bash dengan cara:
   ```bash
   man bash
   ```
@@ -115,7 +145,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
     ![ss-1](/images/ss-1.png)
 
-### 1.4 Variabel
+### 1.5 Variabel
 * Beberapa hal yang perlu diperhatikan dalam mendefinisikan variabel:
    1. Nama variabel hanya boleh terdiri dari:
         * **Huruf** (a-z dan A-Z)
@@ -174,7 +204,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
     
     ![ss-3](/images/ss-3.png)
 
-#### Special Variable
+#### 1.5.1 Special Variable
 * Beberapa special variable yang sering dipakai:
 
   | Variabel | Deskripsi |
@@ -203,7 +233,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
   ![ss-2](/images/ss-2.png)
 
-### 1.5 Input Output
+### 1.6 Input Output
 
 * **read** digunakan untuk mengambil input dari keyboard dengan syntax sebagai berikut:
   ```bash
@@ -250,7 +280,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   ![ss-7](images/ss-7.png)
 
 
-### 1.6 Quoting 
+### 1.7 Quoting 
 * Shell Unix/Linux memiliki beberapa karakter spesial yang disebut dengan **metakarakter**. Karakter tersebut punya makna khusus jika digunakan di dalam shell script. Beberapa macam metakarakter:
   ```bash
   * ? [ ] ' " \ $ ; & ( ) | ^ < > new-line space tab
@@ -300,7 +330,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
   Lebih banyak dapat dilihat sendiri di `man bash`
 
-### 1.7 Operator Dasar
+### 1.8 Operator Dasar
 * Ada beberapa jenis operator yang didukung oleh shell, yaitu:
   1. Operator Aritmatika
   2. Operator Relasional
@@ -310,7 +340,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
   Namun yang akan dibahas lebih jauh hanyalah operator **aritmatika** dan **relasional**.
 
-#### 1.7.1 Operator Aritmatika
+#### 1.8.1 Operator Aritmatika
 
 | No | Operator | Deskripsi | 
 |---|---|---|
@@ -362,7 +392,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
   ![ss-8](/images/ss-8.png)
 
-#### Operator Relasional
+#### 1.8.2 Operator Relasional
 
 | No | Operator | Deskripsi | 
 |---|---|---|
@@ -393,13 +423,13 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   ```
   
 
-### 1.8 Conditional Statements
+### 1.9 Conditional Statements
 * **Conditional statements** digunakan untuk memungkinkan program dapat membuat keputusan yang benar dengan memilih tindakan tertentu berdasarkan syarat/kondisi tertentu.
 * Ada 2 jenis conditional statements dalam Unix shell, yaitu:
   1. **if...else**
   2. **case...esac**
    
-#### If...Else
+#### 1.9.1 If...Else
 * Syntax
   ```bash
   if [ kondisi1 ]
@@ -437,7 +467,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   a lebih besar dari b
   ```
 
-#### Case...Esac
+#### 1.9.2 Case...Esac
 * Syntax
   ```bash
   case var in
@@ -478,14 +508,14 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
   ![ss-9](/images/ss-9.png)
 
-### 1.9 Loop
+### 1.10 Loop
 * **Loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali. Ada beberapa macam shell loops:
   1. While loop
   2. For loop
   3. Until loop
   4. Select loop
 
-#### While loop
+#### 1.10.1 While loop
 * **While loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali **selama** suatu kondisi terpenuhi.
 * While digunakan jika kita ingin memanipulasi suatu variabel secara berulang-ulang.
 *  Syntax
@@ -515,7 +545,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   6
   8
   ```
-#### For loop
+#### 1.10.2 For loop
 * **For loop** digunakan untuk mengulang serangkaian perintah untuk setiap item pada daftar.
 * Syntax
     ```bash
@@ -542,7 +572,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
     5
     ```
 
-#### Until loop
+#### 1.10.3 Until loop
 * Berbeda dengan while, **until loop** digunakan untuk mengeksekusi serangkaian perintah berulang kali **sampai** suatu kondisi terpenuhi.
 *  Syntax
     ```bash
@@ -572,7 +602,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
     8
     ```
 
-#### Select loop
+#### 1.10.4 Select loop
 * **Select loop** digunakan ketika kita ingin membuat sebuah program dengan beberapa daftar pilihan yang bisa dipilih oleh user, misalnya daftar menu.
 *  Syntax
     ```bash
@@ -606,7 +636,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
     ![ss-10](/images/ss-10.png)
 
-#### Nesting Loops
+#### 1.10.5 Nesting Loops
 * Semua jenis loop di atas mendukung konsep nesting, artinya kita dapat menempatkan satu loop ke dalam loop lain, baik loop yang sejenis maupun berbeda jenis
 * Contoh:
   ```bash
@@ -639,7 +669,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   8 7 6 5 4 3 2 1 0 
   9 8 7 6 5 4 3 2 1 0 
   ```
-### 1.10 Function
+### 1.11 Function
 * **Fungsi** digunakan untuk memecah fungsionalitas keseluruhan script menjadi sub-bagian yang lebih kecil. Sub-bagian itu dapat dipanggil untuk melakukan tugas masing-masing apabila diperlukan.
 * Syntax
   ```bash
@@ -671,7 +701,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
 
   ![ss-11](/images/ss-11.png)
 
-#### Nested Functions
+#### 1.11.1 Nested Functions
 ```bash
 #!/bin/bash
 
@@ -689,7 +719,7 @@ reply() {
 ask_name
 ```
 
-### 1.11 Referensi 
+### 1.12 Referensi 
 * https://www.tutorialspoint.com/unix/shell_scripting.htm
 * https://pemula.linux.or.id/programming/bash-shell.html
   
