@@ -9,7 +9,7 @@ double=3
 echo "$single"
 
 #Backslash
-echo "siapa namamu!"
+echo \<-\$1500.\*\*\>\; \(update\?\) \[y\|n\]
 
 #Backquote
 date=`date`

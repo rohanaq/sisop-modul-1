@@ -6,34 +6,6 @@
 2. Paham CLI (Command Line Interface) - [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
    
 ## Daftar Isi
-  - [1. Shell Scripting](#1-shell-scripting)
-    - [1.1 Shell](#11-shell)
-    - [1.2 Shell Scripting](#12-shell-scripting)
-    - [1.3 Membuat Shell Script](#13-membuat-shell-script)
-    - [1.4 Variable](#14-variable)
-    - [1.5 Input Output](#15-input-output)
-    - [1.6 Quoting Mechanism](#16-quoting-mechanism)
-    - [1.7 Operator Dasar](#17-operator-dasar)
-      - [Operator Aritmatika](#operator-aritmatika)
-      - [Operator Relasional](#operator-relasional)
-    - [1.8 Conditional Statements](#18-conditional-statements)
-      - [If...Else](#ifelse)
-      - [Case...Esac](#caseesac)
-    - [1.9 Loop](#19-loop)
-      - [While loop](#while-loop)
-      - [For loop](#for-loop)
-      - [Until loop](#until-loop)
-      - [Select loop](#select-loop)
-    - [1.10 Function](#110-function)
-    - [1.11 Referensi](#111-referensi)
-  - [2. Cron](#2-cron)
-    - [2.1 Menambahkan atau mengubah cron job](#21-menambahkan-atau-mengubah-cron-job)
-    - [2.2 Referensi](#22-referensi)
-  - [3. AWK](#3-awk)
-    - [3.1 Menjalankan program awk](#31-menjalankan-program-awk)
-    - [3.2 Special Rules](#32-special-rules)
-    - [3.3 Referensi](#33-referensi)
-  - [4. Latihan](#4-latihan)
 
 ## 1. Shell Scripting
 ### 1.1 Shell
@@ -44,7 +16,7 @@ Sebuah sistem operasi terdiri dari dua komponen utama, yaitu **Kernel** dan **Sh
 * **Kernel** adalah inti dari komputer. Komponen ini memungkinkan terjadinya komunikasi antara software dan hardware. Jika kernel adalah bagian terdalam dari sebuah sistem operasi, maka **shell** adalah bagian terluarnya.
 * **Shell** adalah program penerjemah perintah yang menjembatani user dengan kernel. Umumnya, shell menyediakan **prompt** sebagai user interface tempat user menginputkan perintah-perintah yang diinginkan, baik berupa perintah internal maupun eksternal. Setelah menerima input dari user dan menjalankan program/perintah berdasarkan input tersebut, shell akan mengeluarkan output. Shell dapat diakses melalui **Terminal**.
 
-  > Catatan: Coba buka terminal di Linux, maka kamu akan menemukan **prompt** shell (biasanya **$**). Disitu, kamu dapat mengetik input berupa perintah, kemudian mengeksekusinya dengan menekan tombol "Enter". Output akan ditampilkan di terminal.
+> Catatan: Coba buka terminal di Linux, maka kamu akan menemukan **prompt** shell (biasanya **$**). Disitu, kamu dapat mengetik input berupa perintah, kemudian mengeksekusinya dengan menekan tombol "Enter". Output akan ditampilkan di terminal.
 
 Ada 2 tipe shell utama di Unix/Linux, yaitu:
 1. **Bourne Shell** - Prompt untuk shell ini adalah **$**
@@ -71,7 +43,7 @@ Shell yang digunakan dalam modul ini adalah **Bash** karena paling banyak diguna
 ```bash
 $ echo $SHELL
 ```
-Shell memiliki perintah **internal** (built in shell) dan perintah **eksternal**. Untuk mengecek apakah sebuah perintah termasuk internal atau eksternal, gunakan perintah `type`
+Shell memiliki perintah **internal** (built-in shell) dan perintah **eksternal**. Untuk mengecek apakah sebuah perintah termasuk internal atau eksternal, gunakan perintah `type`
 ```bash
 $ type cd
 cd is a shell builtin
@@ -86,7 +58,7 @@ chmod is /bin/chmod
 * Contoh perintah eksternal: `cat, cut, paste, chmod, lpr,...`. Beberapa perintah eksternal dapat dilihat di [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
 
 Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell:
-1. Redirection (cara mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <, <<`, contoh:
+1. **Redirection** (mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <, <<`, contoh:
     ```bash
     ls > data
     #hasil output ls dikirim ke file data. jika file belum ada akan dibuat, tetapi jika sudah ada, isinya akan ditimpa
@@ -97,14 +69,14 @@ Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell
     cat < data
     #file data dijadikan input oleh perintah cat
     ```
-2. Pipe (output suatu perintah menjadi input perintah lain) menggunakan operator `|`, contoh:
+2. **Pipe** (output suatu perintah menjadi input perintah lain) menggunakan operator `|`, contoh:
     ```bash
     ls -l | sort -s
     #ouput perintah ls -l menjadi input perintah sort -s (urutkan secara descending)
 
     cat < data | sort > databaru
     ```
-3. Wildcard dengan karakter `*, ?, [ ]`, contoh:
+3. **Wildcard** menggunakan karakter `*, ?, [ ]`, contoh:
     ```bash
     ls i*
     #tampilkan semua file yang dimulai dengan i
@@ -115,8 +87,13 @@ Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell
     ls [ab]*
     #tampilkan file yang dimulai dengan salah satu karakter a atau b
     ```
+Untuk melihat informasi secara lengkap, silahkan membuka manual bash dengan:
+```bash
+man bash
+```
+
 ### 1.4 Simple Shell Script
-1. Buatlah sebuah file berekstensi **.sh** menggunakan editor apapun, misalnya `nano`, `vim`, atau `gedit`.
+1. Buatlah sebuah file berekstensi **.sh** menggunakan editor apapun, misalnya `nano`, `vi`, atau `gedit`.
     ```bash 
     nano nama_file.sh
     ```
@@ -125,131 +102,184 @@ Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell
     nano hello-sisop.sh
     ```
 2. Tulis beberapa baris perintah disana, diawali dengan **shebang** `#!/bin/bash`. Shebang berfungsi untuk memberitahu sistem bahwa perintah-perintah yg ada di dalam file tersebut harus dijalankan oleh Bash.
+     ```bash 
+    #!/bin/bash
 
-    ![ss-2](/images/ss-2.png)
+    echo "Hello, sis!"
+    ```
 
 3. Simpan dan ubah permission file script agar dapat dieksekusi.
     ```bash
-    chmod +x nama_file.sh
+    chmod +x hello-sisop.sh
     ```
 4. Eksekusi file script dengan cara `./nama_file.sh` atau `bash nama_file.sh`.
 
     ![ss-1](/images/ss-1.png)
 
-### 1.4 Variable
-* Nama variabel hanya boleh terdiri dari:
-  * **Huruf** (a-z dan A-Z)
-  * **Angka** (0-9)
-  * Karakter **underscore** (_)
-  
-  Kita tidak bisa menggunakan karakter **!**, **\***, atau **-** karena karakter tersebut punya makna khusus untuk shell.
-* Syntax 
-  * Mendefinisikan variabel
-    ```bash
-    nama_var=nilai
-    ```
-  * Mengakses variabel
-    ```bash
-    $nama_var
-    ```
-* Tipe-tipe variabel
-  * String
-    ```bash
-    nama_var="string"
-    ```
-  * Integer
-    ```bash
-    nama_var=nilai
-    ```
-  * Array
-    ```bash
-    #Jika isi array berupa string
-    nama_var=("string0" "string1" "string2" ... "stringN")
-    
-    #Jika isi array berupa integer
-    nama_var=(nilai0 nilai1 nilai2 ... nilaiN)    
-    ```
-* Contoh:
+### 1.4 Variabel
+
+Beberapa hal yang perlu diperhatikan dalam mendefinisikan variabel:
+   1. Nama variabel hanya boleh terdiri dari:
+        * **Huruf** (a-z dan A-Z)
+        * **Angka** (0-9)
+        * Karakter **underscore** (_)
+   2. Nama variabel dimulai dengan huruf atau underscore
+   3. Tidak boleh menggunakan karakter spesial seperti `!, *, $, #, -`, dll karena karakter tersebut punya makna khusus untuk shell
+   4. Bersifat case sensitive (membedakan huruf besar dan kecil)
+
+**Syntax** 
+* Mendefinisikan variabel
   ```bash
-  #!/bin/bash
-
-  mata_kuliah="Sistem Operasi A"
-  semester=4
-  mahasiswa=("Khawari" "Raldo" "Aguel" "Tamtam")
-
-  echo "Variabel string:" $mata_kuliah
-  echo "Variabel integer:" $semester
-  echo "Variabel array ke-1:" ${mahasiswa[0]}
-  echo "Variabel array ke-2:" ${mahasiswa[1]}
-  echo "Variabel array ke-3:" ${mahasiswa[2]}
-  echo "Variabel array ke-4:" ${mahasiswa[3]}
+  nama_var=nilai
   ```
-  Output:
-  ![ss-4](/images/ss-4.png)
+* Mengakses variabel
+  ```bash
+  $nama_var
+  ```
+**Tipe-Tipe Variabel**
+* String
+  ```bash
+  nama_var="string"
+  ```
+* Integer
+  ```bash
+  nama_var=nilai
+  ```
+* Array
+  ```bash
+  #Jika isi array berupa string
+  nama_var=("string0" "string1" "string2" ... "stringN")
   
-  Catatan:
-  * Syntax array diatas hanya dapat dieksekusi oleh **bash**, sehingga harus dieksekusi dengan cara `bash nama_file.sh` atau `bash ./nama_file.sh`. Jika menggunakan `./nama_file.sh` maka akan muncul error:
-    ![ss-3](/images/ss-3.png)
-* Selain tipe-tipe variabel diatas, ada juga yang disebut dengan **special variabel**. Ada banyak sekali macamnya, sehingga bisa dibaca-baca sendiri disini https://www.tutorialspoint.com/unix/unix-special-variables.htm
+  #Jika isi array berupa integer
+  nama_var=(nilai0 nilai1 nilai2 ... nilaiN)    
+  ```
+
+Contoh:
+
+```bash
+#!/bin/bash
+
+mata_kuliah="Sistem Operasi A"
+semester=4
+mahasiswa=("Khawari" "Raldo" "Aguel" "Tamtam")
+
+echo "Variabel string:" $mata_kuliah
+echo "Variabel integer:" $semester
+echo "Variabel array ke-3:" ${mahasiswa[2]}
+```
+Output:
+
+![ss-6](/images/ss-6.png)
+  
+Catatan:
+* Syntax array diatas hanya dapat dieksekusi oleh **bash**, sehingga harus dieksekusi dengan cara `bash nama_file.sh` atau `bash ./nama_file.sh`. Jika menggunakan `./nama_file.sh` saja akan muncul error:
+  
+  ![ss-3](/images/ss-3.png)
+
+#### Special Variable
+
+*Beberapa special variable yang sering dipakai:
+
+| Variabel | Deskripsi |
+|---|---|
+| $0 | Berisi nama file script yang sedang dijalankan |
+| $n | n disini adalah angka desimal positif yang sesuai dengan posisi argumen (argumen pertama adalah `$1`, argumen kedua adalah `$2`, dst) |
+| $# | Jumlah argumen yang diinput pada script |
+| $* | Semua argumen $n |
+| $? | Status exit dari perintah terakhir yang dijalankan |
+| $$ | Proses ID (PID) shell saat ini |
+
+Contoh:
+
+```bash
+#!/bin/bash
+
+echo "Nama script : $0"
+echo "Argumen ke-1 : $1"
+echo "Argumen ke-2 : $2"
+echo "Hai $1, selamat datang di kelas $2!"
+echo "Total argumen : $#"
+echo "Semua argumen : $*"
+echo "PID : $$" 
+```
+Output:
+
+![ss-2](/images/ss-2.png)
 
 ### 1.5 Input Output
 
-* **Read** digunakan untuk mengambil input dari keyboard dengan syntax sebagai berikut:
-  ```bash
-  read nama_var
-  ```  
-* **Echo** digunakan untuk menampilkan output dengan syntax sebagai berikut:
-  ```bash
-  #Menampilkan teks biasa
-  echo "teks"
+**Read** digunakan untuk mengambil input dari keyboard dengan syntax sebagai berikut:
+```bash
+read nama_var
+```  
+**Echo** digunakan untuk menampilkan output dengan syntax sebagai berikut:
+```bash
+#Menampilkan teks biasa
+echo "teks"
 
-  #Menampilkan isi dari sebuah variabel
-  echo $nama_var
-  ```
-* Contoh:
-  ```bash
-  #!/bin/bash
+#Menampilkan isi dari sebuah variabel
+echo $nama_var
+```
+
+Contoh:
+```bash
+#!/bin/bash
+
+echo "Siapa namamu?"
+read nama
+echo "Hai $nama, selamat datang di praktikum sistem operasi!"
+```
+Output:
+
+![ss-5](images/ss-5.png)
+
+### 1.6 Quoting 
+Shell Unix/Linux memiliki beberapa karakter spesial yang disebut dengan **metakarakter**. Karakter tersebut punya makna khusus jika digunakan di dalam shell script. Beberapa macam metakarakter:
+```bash
+* ? [ ] ' " \ $ ; & ( ) | ^ < > new-line space tab
+```
+Ada 4 jenis **quoting**, yaitu:
   
-  echo "Siapa namamu?"
-  read nama
-  echo "Hai $nama, selamat datang di praktikum sistem operasi!"
-  ```
-  Output:
-  ![ss-5](images/ss-5.png)
+| No | Quoting | Deskripsi|
+|---|---|---|
+| 1 | Single Quote (') | Semua metakarakter di antara single quote akan kehilangan makna khusus |
+| 2 | Double Quote (") | Sebagian besar metakarakter di antara double quote akan kehilangan makna khusus, kecuali `$, backquote, \$, \', \", \\` |
+| 3 | Backslash (\\) | Karakter apa pun setelah backslash akan kehilangan makna khusus |
+| 4 | Backquote (`) | Apa pun di antara back quote akan diperlakukan sebagai perintah dan akan dieksekusi |
 
-### 1.6 Quoting Mechanism
-* Unix Shell memiliki beberapa karakter khusus shell yang disebut dengan **metakarakter**. Karakter tersebut punya makna khusus jika digunakan di dalam shell script. Beberapa jenis metakarakter:
-  ```bash
-  * ? [ ] ' " \ $ ; & ( ) | ^ < > new-line space tab
-  ```
-* Ada 4 jenis **quoting**, yaitu:
-  
-    | No | Quoting | Deskripsi|
-    |---|---|---|
-    | 1 | Single Quote (') | Semua metakarakter di antara single quote akan kehilangan makna khusus |
-    | 2 | Double Quote (") | Sebagian besar metakarakter di antara double quote akan kehilangan makna khusus, kecuali `$, backquote, \$, \', \", \\` |
-    | 3 | Backslash (\\) | Karakter apa pun setelah backslash akan kehilangan makna khusus |
-    | 4 | Backquote (`) | Apa pun di antara back quote akan diperlakukan sebagai perintah dan akan dieksekusi |
+Contoh:
+```bash
+#!/bin/bash
 
-* Contoh:
-    ```bash
-    #!/bin/bash
-    
-    #Single quote
-    single=3
-    echo '$single'
+#Single quote
+single=3
+echo '$single'
 
-    #Double quote
-    double=3
-    echo "$single"
+#Double quote
+double=3
+echo "$single"
 
-    #Backslash
-    echo siapa namamu\?
+#Backslash
+echo \<-\$1500.\*\*\>\; \(update\?\) \[y\|n\]
 
-    #Backquote
-    date=`date`
-    echo "Hari ini:" $date
-    ```
+#Backquote
+date=`date`
+echo "Hari ini:" $date
+```
+
+Output:
+
+![ss-4](/images/ss-4.png)
+
+
+**Backslash Character**
+
+| Karakter | Deskripsi |
+|---|---|
+| \n | New line (baris baru) |
+| \a | Alert bell |
+| \b | Backspace |
+| \E | Escape character |
 
 ### 1.7 Operator Dasar
 * Ada beberapa jenis operator yang didukung oleh shell, yaitu:
