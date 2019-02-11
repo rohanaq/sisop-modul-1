@@ -89,16 +89,16 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   * Contoh perintah **eksternal**: `cat, cut, paste, chmod, lpr,...`. Beberapa perintah eksternal dapat dilihat di [Modul Pengenalan CLI](https://github.com/raldokusuma/modul-pengenalan-CLI)
 
 * Selain itu, ada beberapa karakter yang cukup penting untuk digunakan dalam shell:
-  * **Redirection** (mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <, <<`, contoh:
+  * **Redirection** (mengirim output ke file atau menerima input dari file) menggunakan operator redirect `>, >>, <`, contoh:
       ```bash
-      ls > data
+      ls > data.txt
       #hasil output ls dikirim ke file data. jika file belum ada akan dibuat, tetapi jika sudah ada, isinya akan ditimpa
 
-      ls >> data
+      ls >> data.txt
       #hampir sama, bedanya jika file sudah ada maka isinya akan ditambah di akhir file
 
-      cat < data
-      #file data dijadikan input oleh perintah cat
+      sort < data.txt
+      #file data dijadikan input oleh perintah sort
       ```
   * **Pipe** (output suatu perintah menjadi input perintah lain) menggunakan operator `|`, contoh:
       ```bash
@@ -731,6 +731,7 @@ ask_name
 ### 1.12 Referensi 
 * https://www.tutorialspoint.com/unix/shell_scripting.htm
 * https://pemula.linux.or.id/programming/bash-shell.html
+* https://www.lifewire.com/redirection-operator-2625979
   
 ## 2. Cron
 Cron memungkinkan user Linux dan Unix untuk menjalankan perintah atau script pada waktu tertentu secara otomatis. Cron service (daemon) secara konstan memeriksa _/etc/crontab_ file dan _/etc/cron.*/_ direktori juga _/var/spool/cron_ direktori. Setiap user memiliki crontab file masing-masing.
