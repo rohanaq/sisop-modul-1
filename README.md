@@ -299,12 +299,12 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   ```bash
   #!/bin/bash
 
-  #Single quote
   single=3
+
+  #Single quote
   echo '$single'
 
   #Double quote
-  double=3
   echo "$single"
 
   #Backslash
@@ -374,7 +374,7 @@ Ada 2 tipe shell utama di Unix/Linux, yaitu:
   bagi=`expr $a / $b`
 
   #memakai perintah subtitusi $((ekspresi))
-  modulus=$(($a % $b)) 
+  mod=$(($a % $b)) 
   
   echo "a + b = $jumlah"
   echo "a - b = $kurang"
